@@ -1,0 +1,10 @@
+{
+  "name": "RPS_project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "cypress": "^9.1.0",
+    "superstatic": "^7.1.0"
+  }
+}
