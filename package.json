@@ -10,6 +10,6 @@
   "scripts": {
     "start": "superstatic src --port 3000",
     "cy:open": "cypress open",
-    "cypress": "start-server-and-test start http://localhost:3000 cy:open"
+    "cypress": "start-server-and-test start:dev http://localhost:3000 cy:open"
   }
 }
