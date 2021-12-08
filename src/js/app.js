@@ -55,3 +55,22 @@ function gameLogic() {
   }
   showResult.innerHTML = result
 }
+// Local Storage logic
+const gameCounter = new GameCounter();
+const resultList = document.querySelector("[id=result_list] ul");
+
+
+const listResult = () => {
+  resultList.innerHTML = "";
+  const matches = gameCounter.index();
+  let match;
+  matches.forEach((result) => {
+    let newMatchItem = document.createElement("li");
+    newMatchItem.innerHTML = result
+    gameCounter.appendChild(newMatchItem);
+  })
+
+}
+
+
+listResult()
