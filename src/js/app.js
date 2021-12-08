@@ -17,17 +17,18 @@ playerButtonChoice.forEach((playerButtonSelect) =>
 );
 
 function generateComputerChoice() {
-  const randomNumber = Math.floor(Math.random() * 3) + 1;
-  //                        Math.random gives random number between 0 and 1
-  if (randomNumber === 1) {
+  const randomNumber = Math.floor(Math.random() * 3)
+
+  if (randomNumber === 0) {
     computerChoice = "Rock";
   }
-  if (randomNumber === 2) {
+  if (randomNumber === 1) {
     computerChoice = "Paper";
   }
-  if (randomNumber === 3) {
+  if (randomNumber === 2) {
     computerChoice = "Scissor";
   }
+  showComputerChoice.innerHTML = computerChoice
 }
 
 function gameLogic() {
@@ -52,4 +53,5 @@ function gameLogic() {
   if (playerChoice === "scissor" && computerChoice === "paper") {
     result = "You lose!";
   }
+  showResult.innerHTML = result
 }
