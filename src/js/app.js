@@ -64,11 +64,13 @@ const listResult = () => {
   resultList.innerHTML = "";
   const matches = gameCounter.index();
   let match;
-  matches.forEach((result) => {
-    let newMatchItem = document.createElement("li");
+  function matchResult() {
+    var newMatchItem = document.createElement("li");
+    var matchResult = document.createTextNode(`${result}`)
     newMatchItem.innerHTML = result
-    gameCounter.appendChild(newMatchItem);
-  })
+    gameCounter.appendChild(matchResult);
+    return matchResult
+  }
 
 }
 
