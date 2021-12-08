@@ -20,13 +20,13 @@ function generateComputerChoice() {
   const randomNumber = Math.floor(Math.random() * 3)
 
   if (randomNumber === 0) {
-    computerChoice = "Rock";
+    computerChoice = "rock";
   }
   if (randomNumber === 1) {
-    computerChoice = "Paper";
+    computerChoice = "paper";
   }
   if (randomNumber === 2) {
-    computerChoice = "Scissor";
+    computerChoice = "scissor";
   }
   showComputerChoice.innerHTML = computerChoice
 }
@@ -36,22 +36,22 @@ function gameLogic() {
     result = "It's a draw!";
   }
   if (playerChoice === "rock" && computerChoice === "paper") {
-    result = "You win!";
+    result = "You lose!";
   }
   if (playerChoice === "rock" && computerChoice === "scissor") {
-    result = "You lose!";
+    result = "You win!";
   }
   if (playerChoice === "paper" && computerChoice === "rock") {
-    result = "You lose!";
+    result = "You win!";
   }
   if (playerChoice === "paper" && computerChoice === "scissor") {
-    result = "You win!";
+    result = "You lose!";
   }
   if (playerChoice === "scissor" && computerChoice === "rock") {
-    result = "You win!";
+    result = "You lose!";
   }
   if (playerChoice === "scissor" && computerChoice === "paper") {
-    result = "You lose!";
+    result = "You win!";
   }
   showResult.innerHTML = result
 }
