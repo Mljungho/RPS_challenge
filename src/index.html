@@ -5,14 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RPS challenge</title>
-    <style>
-      .rectangle {
-        height: 50px;
-        width: 100px;
-        background-color: #555;
-        opacity: 0.5;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css"></link>
   </head>
   <body>
     <h1>Rock, Paper, Scissor!</h1>
@@ -26,13 +19,12 @@
     <button id="scissor">Scissor</button>
 
     <div id="score_list" class="rectangle">
-      <span class="result-score" playerScore>0</span>
-      <span class="result-score" drawCounter>0</span>
-      <span class="result-score" computerScore>0</span>
+      <span class="player-result-score" playerScore>0</span>
+      <span class="draw-result-score" drawCounter>0</span>
+      <span class="computer-result-score" computerScore>0</span>
     </div>
     <div id="result_list"><ul></ul></div>
 
     <script src="/js/app.js"></script>
-    <script src="/style.css"></script>
   </body>
 </html>

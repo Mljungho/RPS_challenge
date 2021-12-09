@@ -1,6 +1,7 @@
 let playerChoice;
 let computerChoice;
 let result;
+let randomNumber
 
 const showPlayerChoice = document.getElementById("playerChoice");
 const showComputerChoice = document.getElementById("computerChoice");
@@ -15,6 +16,7 @@ playerButtonChoice.forEach((playerButtonSelect) =>
   playerButtonSelect.addEventListener("click", (e) => {
     playerChoice = e.target.id;
     showPlayerChoice.innerHTML = playerChoice;
+    debugger
     generateComputerChoice();
     gameLogic();
     gameHistory();
@@ -26,19 +28,27 @@ playerButtonChoice.forEach((playerButtonSelect) =>
 );
 
 function generateComputerChoice() {
-  const randomNumber = Math.floor(Math.random() * 3);
-
-  if (randomNumber === 0) {
-    computerChoice = "rock";
-  }
-  if (randomNumber === 1) {
+  if (history.length > 3 && ((history[0].playerChoice === history[1].playerChoice) === (history[2].playerChoice === "rock"))) {
     computerChoice = "paper";
+    debugger
   }
-  if (randomNumber === 2) {
-    computerChoice = "scissor";
+  const randomNumber = Math.floor(Math.random() * 3);
+    
+    
+    
+    if (randomNumber === 0) {
+      computerChoice = "rock";
+    }
+    if (randomNumber === 1) {
+      computerChoice = "paper";
+    }
+    if (randomNumber === 2) {
+      computerChoice = "scissor";
+      debugger
+    }
+    showComputerChoice.innerHTML = computerChoice;
   }
-  showComputerChoice.innerHTML = computerChoice;
-}
+
 
 function gameLogic() {
   if (playerChoice === computerChoice) {
