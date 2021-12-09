@@ -7,6 +7,9 @@ const showComputerChoice = document.getElementById("computerChoice");
 const showResult = document.getElementById("result");
 const playerButtonChoice = document.querySelectorAll("button");
 const history = [];
+const computerScore = document.querySelector("[computerScore]");
+const playerScore = document.querySelector("[playerScore]");
+const drawCounter = document.querySelector("[drawCounter]");
 
 playerButtonChoice.forEach((playerButtonSelect) =>
   playerButtonSelect.addEventListener("click", (e) => {
@@ -16,6 +19,9 @@ playerButtonChoice.forEach((playerButtonSelect) =>
     gameLogic();
     gameHistory();
     showMatchResult();
+    if (history[0].result === "You win!") scoreCounter(playerScore);
+    if (history[0].result === "You lose!") scoreCounter(computerScore);
+    if (history[0].result === "It's a draw!") scoreCounter(drawCounter);
   })
 );
 
@@ -59,27 +65,28 @@ function gameLogic() {
   showResult.innerHTML = result;
 }
 // Local Storage logic
+// Game result
 
 function gameHistory() {
   const matchResult = { playerChoice, computerChoice, result };
   history.unshift(matchResult);
-  console.log(history);
 }
-
 const displayMatchResult = document.querySelector("[id=result_list] ul");
 
 const showMatchResult = () => {
   displayMatchResult.innerHTML = "";
-  let html;
   history.forEach((round) => {
-    html = `Your choice: ${round.playerChoice}`;
-    html += `computer choice: ${round.computerChoice}`;
-    html += `Result: ${round.result}`;
+    let html;
+    html = `Your choice: ${round.playerChoice} `;
+    html += `computer choice: ${round.computerChoice} `;
+    html += `Result: ${round.result} `;
     let newListItem = document.createElement("li");
     newListItem.innerHTML = html;
-    displayMatchResult.appendChild(newListItem)
+    displayMatchResult.appendChild(newListItem);
   });
 };
 
-//unshift objects  in the array in reverce order.
-//push does the same but adds object to last part of array
+function scoreCounter(scoreSpan) {
+  scoreSpan.innerText = parseInt(scoreSpan.innerText) + 1;
+}
+
