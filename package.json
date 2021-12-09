@@ -8,8 +8,8 @@
     "superstatic": "^7.1.0"
   },
   "scripts": {
-    "start": "superstatic src --port 3000",
+    "start": "superstatic src --port 3001",
     "cy:open": "cypress open",
-    "cypress": "start-server-and-test start:dev http://localhost:3000 cy:open"
+    "cypress": "start-server-and-test start:dev http://localhost:3001 cy:open"
   }
 }

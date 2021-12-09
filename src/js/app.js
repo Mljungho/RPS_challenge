@@ -6,6 +6,7 @@ const showPlayerChoice = document.getElementById("playerChoice");
 const showComputerChoice = document.getElementById("computerChoice");
 const showResult = document.getElementById("result");
 const playerButtonChoice = document.querySelectorAll("button");
+const history = [];
 
 playerButtonChoice.forEach((playerButtonSelect) =>
   playerButtonSelect.addEventListener("click", (e) => {
@@ -13,11 +14,13 @@ playerButtonChoice.forEach((playerButtonSelect) =>
     showPlayerChoice.innerHTML = playerChoice;
     generateComputerChoice();
     gameLogic();
+    gameHistory();
+    showMatchResult();
   })
 );
 
 function generateComputerChoice() {
-  const randomNumber = Math.floor(Math.random() * 3)
+  const randomNumber = Math.floor(Math.random() * 3);
 
   if (randomNumber === 0) {
     computerChoice = "rock";
@@ -28,7 +31,7 @@ function generateComputerChoice() {
   if (randomNumber === 2) {
     computerChoice = "scissor";
   }
-  showComputerChoice.innerHTML = computerChoice
+  showComputerChoice.innerHTML = computerChoice;
 }
 
 function gameLogic() {
@@ -53,5 +56,30 @@ function gameLogic() {
   if (playerChoice === "scissor" && computerChoice === "paper") {
     result = "You win!";
   }
-  showResult.innerHTML = result
+  showResult.innerHTML = result;
 }
+// Local Storage logic
+
+function gameHistory() {
+  const matchResult = { playerChoice, computerChoice, result };
+  history.unshift(matchResult);
+  console.log(history);
+}
+
+const displayMatchResult = document.querySelector("[id=result_list] ul");
+
+const showMatchResult = () => {
+  displayMatchResult.innerHTML = "";
+  let html;
+  history.forEach((round) => {
+    html = `Your choice: ${round.playerChoice}`;
+    html += `computer choice: ${round.computerChoice}`;
+    html += `Result: ${round.result}`;
+    let newListItem = document.createElement("li");
+    newListItem.innerHTML = html;
+    displayMatchResult.appendChild(newListItem)
+  });
+};
+
+//unshift objects  in the array in reverce order.
+//push does the same but adds object to last part of array

@@ -1,11 +1,11 @@
 describe("User can press buttons and play rock paper scissiors", () => {
   before(() => {
-    cy.visit("http://localhost:3000");
+    cy.visit("http://localhost:3001");
   });
 
   describe("user can see UI elements", () => {
-    it("is expected to see Hello World",() => {
-      cy.get("h1").should("contain.text", "Hello world")
+    it("is expected to see Rock, Paper, Scissor!",() => {
+      cy.get("h1").should("contain.text", "Rock, Paper, Scissor!")
     })
   })
   
