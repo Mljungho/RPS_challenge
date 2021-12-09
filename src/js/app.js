@@ -1,13 +1,24 @@
 let playerChoice;
 let computerChoice;
 let result;
+// let playerScore;
+// let computerScore;
+// let drawCounter;
 
 const showPlayerChoice = document.getElementById("playerChoice");
 const showComputerChoice = document.getElementById("computerChoice");
 const showResult = document.getElementById("result");
 const playerButtonChoice = document.querySelectorAll("button");
 const history = [];
-const score = [];
+// const score = {
+//   player: playerScore,
+//   computer: computerScore,
+//   draw: drawCounter,
+// };
+
+const computerScore = document.querySelector("[computerScore]");
+const playerScore = document.querySelector("[playerScore]");
+const drawCounter = document.querySelector("[drawCounter]");
 
 playerButtonChoice.forEach((playerButtonSelect) =>
   playerButtonSelect.addEventListener("click", (e) => {
@@ -17,7 +28,9 @@ playerButtonChoice.forEach((playerButtonSelect) =>
     gameLogic();
     gameHistory();
     showMatchResult();
-    scoreCounter();
+    if (history[0].result === "You win!") scoreCounter(playerScore);
+    if (history[0].result === "You lose!") scoreCounter(computerScore);
+    if (history[0].result === "It's a draw!") scoreCounter(drawCounter);
   })
 );
 
@@ -67,13 +80,12 @@ function gameHistory() {
   const matchResult = { playerChoice, computerChoice, result };
   history.unshift(matchResult);
 }
-
 const displayMatchResult = document.querySelector("[id=result_list] ul");
 
 const showMatchResult = () => {
   displayMatchResult.innerHTML = "";
   history.forEach((round) => {
-  let html;
+    let html;
     html = `Your choice: ${round.playerChoice} `;
     html += `computer choice: ${round.computerChoice} `;
     html += `Result: ${round.result} `;
@@ -83,22 +95,36 @@ const showMatchResult = () => {
   });
 };
 
-// Tournament counter
+// Tournament counterscoreCounter
 
-const displayScoreResult = document.querySelector("[id=score_list] div");
-
-function scoreCounter() {
-  const scoreResult = { playerChoice, result };
-  history.unshift(scoreResult);
+function scoreCounter(scoreSpan) {
+  scoreSpan.innerText = parseInt(scoreSpan.innerText) + 1;
 }
-const showTournamentScore = () => {
-  displayScoreResult.innerHTML = "";
-  let counter;
-  history.forEach((history) => {
-    counter = `Your score: ${history[0].result} `;
-    counter = `Your choice: ${history[0].playerChoice} `;
-    let scoreTracker = document.createElement("div");
-    scoreTracker.innerHTML = counter;
-    displayScoreResult.appendChild(scoreTracker);
-  });
-};
+
+// const displayScoreResult = document.querySelector("[id=score_list] div");
+
+// function scoreCounter() {
+//   const score = history[0].result;
+
+//   if (score === "You win!") {
+//     playerScore += 1;
+//   }
+//   if (score === "You lose!") {
+//     computerScore += 1;
+//   }
+//   if (score === "It's a draw!") {
+//     drawCounter += 1
+//   }
+//   scoreUpdate.innerHTML = score
+
+// }
+
+// displayScoreResult.innerHTML = "";
+// let counter;
+// history.forEach((history) => {
+//   counter = `Your score: ${history[0].result} `;
+//   counter = `Your choice: ${history[0].playerChoice} `;
+//   let scoreTracker = document.createElement("div");
+//   scoreTracker.innerHTML = counter;
+//   displayScoreResult.appendChild(scoreTracker);
+// });
