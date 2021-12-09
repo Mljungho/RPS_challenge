@@ -7,6 +7,7 @@ const showComputerChoice = document.getElementById("computerChoice");
 const showResult = document.getElementById("result");
 const playerButtonChoice = document.querySelectorAll("button");
 const history = [];
+const score = [];
 
 playerButtonChoice.forEach((playerButtonSelect) =>
   playerButtonSelect.addEventListener("click", (e) => {
@@ -16,6 +17,7 @@ playerButtonChoice.forEach((playerButtonSelect) =>
     gameLogic();
     gameHistory();
     showMatchResult();
+    scoreCounter();
   })
 );
 
@@ -59,27 +61,44 @@ function gameLogic() {
   showResult.innerHTML = result;
 }
 // Local Storage logic
+// Game result
 
 function gameHistory() {
   const matchResult = { playerChoice, computerChoice, result };
   history.unshift(matchResult);
-  console.log(history);
 }
 
 const displayMatchResult = document.querySelector("[id=result_list] ul");
 
 const showMatchResult = () => {
   displayMatchResult.innerHTML = "";
-  let html;
   history.forEach((round) => {
-    html = `Your choice: ${round.playerChoice}`;
-    html += `computer choice: ${round.computerChoice}`;
-    html += `Result: ${round.result}`;
+  let html;
+    html = `Your choice: ${round.playerChoice} `;
+    html += `computer choice: ${round.computerChoice} `;
+    html += `Result: ${round.result} `;
     let newListItem = document.createElement("li");
     newListItem.innerHTML = html;
-    displayMatchResult.appendChild(newListItem)
+    displayMatchResult.appendChild(newListItem);
   });
 };
 
-//unshift objects  in the array in reverce order.
-//push does the same but adds object to last part of array
+// Tournament counter
+
+const displayScoreResult = document.querySelector("[id=score_list] div");
+
+function scoreCounter() {
+  const scoreResult = { playerChoice, result };
+  history.unshift(scoreResult);
+}
+const showTournamentScore = () => {
+  displayScoreResult.innerHTML = "";
+  let counter;
+  history.forEach((history) => {
+    counter = `Your score: ${history[0].result} `;
+    counter = `Your choice: ${history[0].playerChoice} `;
+    let scoreTracker = document.createElement("div");
+    scoreTracker.innerHTML = counter;
+    displayScoreResult.appendChild(scoreTracker);
+  });
+};
