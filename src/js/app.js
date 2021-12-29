@@ -1,7 +1,7 @@
 let playerChoice;
 let computerChoice;
 let result;
-let randomNumber
+let randomNumber;
 
 const showPlayerChoice = document.getElementById("playerChoice");
 const showComputerChoice = document.getElementById("computerChoice");
@@ -27,29 +27,25 @@ playerButtonChoice.forEach((playerButtonSelect) =>
 );
 
 function generateComputerChoice() {
-  
-  if (history.length > 3 && ((history[0].playerChoice === history[1].playerChoice) === (history[2].playerChoice === "rock"))) {
-    computerChoice = "paper";
-    consolelog("hakuna matata")
-    consolelog(computerChoice)
-  }
-  
-  else if (randomNumber === 0) {
-    computerChoice = "rock";
-  }
-  else if (randomNumber === 1) {
-    computerChoice = "paper";
-  }
-  else (randomNumber === 2) {
-    computerChoice = "scissor";  }
-  showComputerChoice.innerHTML = computerChoice;
-
-  
   const randomNumber = Math.floor(Math.random() * 3);
-  consolelog(randomNumber)
-  consolelog(computerChoice)
+  
+  
+  if (randomNumber === 0) {
+    computerChoice = "rock";
+  } 
+  if (randomNumber === 1) {
+    computerChoice = "paper";
+  } 
+  if (randomNumber === 2) {
+    computerChoice = "scissor";
   }
-
+  if (
+    history.length > 3 && (history[0].playerChoice === history[1].playerChoice) === (history[2].playerChoice === "rock")) {
+      computerChoice = "paper";
+    } 
+    showComputerChoice.innerHTML = computerChoice;
+    
+}
 
 function gameLogic() {
   if (playerChoice === computerChoice) {
@@ -100,4 +96,3 @@ const showMatchResult = () => {
 function scoreCounter(scoreSpan) {
   scoreSpan.innerText = parseInt(scoreSpan.innerText) + 1;
 }
-
