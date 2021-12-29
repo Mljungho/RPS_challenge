@@ -7,16 +7,15 @@ const showPlayerChoice = document.getElementById("playerChoice");
 const showComputerChoice = document.getElementById("computerChoice");
 const showResult = document.getElementById("result");
 const playerButtonChoice = document.querySelectorAll("button");
-const history = [];
 const computerScore = document.querySelector("[computerScore]");
 const playerScore = document.querySelector("[playerScore]");
 const drawCounter = document.querySelector("[drawCounter]");
+const history = [];
 
 playerButtonChoice.forEach((playerButtonSelect) =>
   playerButtonSelect.addEventListener("click", (e) => {
     playerChoice = e.target.id;
     showPlayerChoice.innerHTML = playerChoice;
-    debugger
     generateComputerChoice();
     gameLogic();
     gameHistory();
@@ -28,23 +27,27 @@ playerButtonChoice.forEach((playerButtonSelect) =>
 );
 
 function generateComputerChoice() {
+  
   if (history.length > 3 && ((history[0].playerChoice === history[1].playerChoice) === (history[2].playerChoice === "rock"))) {
     computerChoice = "paper";
-    debugger
+    consolelog("hakuna matata")
+    consolelog(computerChoice)
   }
+  
+  else if (randomNumber === 0) {
+    computerChoice = "rock";
+  }
+  else if (randomNumber === 1) {
+    computerChoice = "paper";
+  }
+  else (randomNumber === 2) {
+    computerChoice = "scissor";  }
+  showComputerChoice.innerHTML = computerChoice;
+
+  
   const randomNumber = Math.floor(Math.random() * 3);
-    
-    if (randomNumber === 0) {
-      computerChoice = "rock";
-    }
-    if (randomNumber === 1) {
-      computerChoice = "paper";
-    }
-    if (randomNumber === 2) {
-      computerChoice = "scissor";
-      debugger
-    }
-    showComputerChoice.innerHTML = computerChoice;
+  consolelog(randomNumber)
+  consolelog(computerChoice)
   }
 
 
