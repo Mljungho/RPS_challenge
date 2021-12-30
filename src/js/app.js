@@ -11,6 +11,7 @@ const computerScore = document.querySelector("[computerScore]");
 const playerScore = document.querySelector("[playerScore]");
 const drawCounter = document.querySelector("[drawCounter]");
 const history = [];
+// let winLossRatio = document.querySelector("[W-L-Ratio]");
 
 playerButtonChoice.forEach((playerButtonSelect) =>
   playerButtonSelect.addEventListener("click", (e) => {
@@ -23,8 +24,10 @@ playerButtonChoice.forEach((playerButtonSelect) =>
     if (history[0].result === "You win!") scoreCounter(playerScore);
     if (history[0].result === "You lose!") scoreCounter(computerScore);
     if (history[0].result === "It's a draw!") scoreCounter(drawCounter);
+    // winLosRatio()
+    // console.log(winLossRatio)
   })
-);
+  );
 
 function generateComputerChoice() {
   const randomNumber = Math.floor(Math.random() * 3);
@@ -39,9 +42,19 @@ function generateComputerChoice() {
   if (randomNumber === 2) {
     computerChoice = "scissor";
   }
+
   if (
     history.length > 3 && (history[0].playerChoice === history[1].playerChoice) === (history[2].playerChoice === "rock")) {
       computerChoice = "paper";
+    } 
+  if (
+    history.length > 3 && (history[0].playerChoice === history[1].playerChoice) === (history[2].playerChoice === "paper")) {
+      computerChoice = "scissor";
+    } 
+
+  if (
+    history.length > 3 && (history[0].playerChoice === history[1].playerChoice) === (history[2].playerChoice === "scissor")) {
+      computerChoice = "rock";
     } 
     showComputerChoice.innerHTML = computerChoice;
     
@@ -96,3 +109,7 @@ const showMatchResult = () => {
 function scoreCounter(scoreSpan) {
   scoreSpan.innerText = parseInt(scoreSpan.innerText) + 1;
 }
+
+// function winLosRatio(playerScore, computerScore) {
+//   winLossRatio = parseInt(playerScore) / parseInt(computerScore)
+// }
